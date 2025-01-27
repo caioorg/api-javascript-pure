@@ -21,4 +21,17 @@ module.exports = {
 
     return response.send(200, user)
   },
+
+  createUser(request, response) {
+    const body = request.body
+    const lastUserId = users[users.length - 1].id
+
+    const newUser = {
+      id: lastUserId + 1,
+      name: body.name,
+    }
+    users.push(newUser)
+
+    response.send(200, newUser)
+  },
 }
